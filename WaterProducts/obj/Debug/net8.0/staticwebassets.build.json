@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "Hash": "3uwAxXA5F6kCCgQOpJroFqCMIvxTUMHRovA+kI3g12Y=",
+  "Source": "WaterProducts",
+  "BasePath": "_content/WaterProducts",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WaterProducts\\wwwroot",
+      "Source": "WaterProducts",
+      "ContentRoot": "G:\\C# Projects\\WaterProducts\\WaterProducts\\wwwroot\\",
+      "BasePath": "_content/WaterProducts",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "G:\\C# Projects\\WaterProducts\\WaterProducts\\wwwroot\\images\\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif",
+      "SourceId": "WaterProducts",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\C# Projects\\WaterProducts\\WaterProducts\\wwwroot\\",
+      "BasePath": "_content/WaterProducts",
+      "RelativePath": "images/c1f71c27-8dfc-411a-b09b-b1ffc504c6bd#[.{fingerprint}]?.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7335n7svlt",
+      "Integrity": "He67AuV00wWQR0WPvFb84VDaF7xqBzGMGPT2wyfCr8g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "images/c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.7335n7svlt.jfif",
+      "AssetFile": "G:\\C# Projects\\WaterProducts\\WaterProducts\\wwwroot\\images\\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5881"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/pjpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"He67AuV00wWQR0WPvFb84VDaF7xqBzGMGPT2wyfCr8g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Jun 2025 14:03:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7335n7svlt"
+        },
+        {
+          "Name": "label",
+          "Value": "images/c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-He67AuV00wWQR0WPvFb84VDaF7xqBzGMGPT2wyfCr8g="
+        }
+      ]
+    },
+    {
+      "Route": "images/c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif",
+      "AssetFile": "G:\\C# Projects\\WaterProducts\\WaterProducts\\wwwroot\\images\\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5881"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/pjpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"He67AuV00wWQR0WPvFb84VDaF7xqBzGMGPT2wyfCr8g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Jun 2025 14:03:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-He67AuV00wWQR0WPvFb84VDaF7xqBzGMGPT2wyfCr8g="
+        }
+      ]
+    }
+  ]
+}
