@@ -47,6 +47,11 @@ namespace WaterProducts.data
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<IdentityRole>().ToTable("Roles");
+            builder.Entity<IdentityRole>().HasData(
+            new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+            new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
+        );
+
             builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
             builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
             builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");

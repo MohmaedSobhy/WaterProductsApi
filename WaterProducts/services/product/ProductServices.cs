@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
 using WaterProducts.data;
 using WaterProducts.dto;
@@ -57,7 +58,14 @@ namespace WaterProducts.services.product
             
         }
 
-        public List<UserProductDto> allProducts(int page)
+        public List<Product> allProductsForAdmin(int page)
+        {
+            var results = dataBase.products.Where(p => p.stockQuantiy > 0).Skip((page - 1) * 5).Take(page * 5)
+               .ToList();
+            return results;
+        }
+
+        public List<UserProductDto> allProductsForUsers(int page)
         {
             var results = dataBase.products.Where(p=>p.stockQuantiy>0).Skip((page - 1) * 5).Take(page * 5)
                 .Select(product => new UserProductDto
@@ -92,6 +100,15 @@ namespace WaterProducts.services.product
             return dataBase.products.FirstOrDefault(product => name == product.Name);
         }
 
+        public async Task<Result> getProductsOutOfStock()
+        {
+            var results = await dataBase.products.AsNoTracking().Where(p => p.stockQuantiy == 0)
+                 .ToListAsync();
+
+            return Result.Success(results);
+
+        }
+
         public List<UserProductDto> searchForProducts(string searchKey)
         {
             var results = dataBase.products.Where(p => p.Name.Contains(searchKey))
@@ -106,9 +123,17 @@ namespace WaterProducts.services.product
             return results;
         }
 
-        public bool updateProductById(Product product)
+        public async Task<Result> updateProductById(int id,Product product)
         {
-            return true;
+            if (id != product.Id)
+            {
+                return Result.Failure("Product Id Not Match");
+            }
+            dataBase.Entry(product).State = EntityState.Modified;
+            await dataBase.SaveChangesAsync();
+            return Result.Success(product);
         }
+
+        
     }
 }

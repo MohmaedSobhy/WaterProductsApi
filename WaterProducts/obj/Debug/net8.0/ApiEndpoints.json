@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "WaterProducts.Controllers.AccountController",
+    "Method": "addAdmin",
+    "RelativePath": "api/Account/AddAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "WaterProducts.dto.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.AccountController",
+    "Method": "getAllAdmins",
+    "RelativePath": "api/Account/AllAdmins",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.AccountController",
     "Method": "login",
     "RelativePath": "api/Account/Login",
     "HttpMethod": "POST",
@@ -189,22 +215,6 @@
   },
   {
     "ContainingType": "WaterProducts.Controllers.ProductsController",
-    "Method": "getAllProduct",
-    "RelativePath": "api/Products",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pagenumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WaterProducts.Controllers.ProductsController",
     "Method": "addProduct",
     "RelativePath": "api/Products",
     "HttpMethod": "POST",
@@ -257,6 +267,27 @@
   },
   {
     "ContainingType": "WaterProducts.Controllers.ProductsController",
+    "Method": "updateProduct",
+    "RelativePath": "api/Products/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "product",
+        "Type": "WaterProducts.models.Product",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.ProductsController",
     "Method": "searchForProducts",
     "RelativePath": "api/Products/{searchKey}",
     "HttpMethod": "GET",
@@ -267,6 +298,48 @@
         "Name": "searchKey",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.ProductsController",
+    "Method": "getAllProductForAdmin",
+    "RelativePath": "api/Products/Admin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagenumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.ProductsController",
+    "Method": "productsOutOfStock",
+    "RelativePath": "api/Products/ProductsOutStock",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.ProductsController",
+    "Method": "getAllUserProduct",
+    "RelativePath": "api/Products/user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagenumber",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

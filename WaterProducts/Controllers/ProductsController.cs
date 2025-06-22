@@ -18,15 +18,29 @@ namespace WaterProducts.Controllers
              this.productServices = productServices;
         }
 
-        [HttpGet]
-        public IActionResult getAllProduct(int pagenumber=1)
+        [HttpGet("user")]
+        public IActionResult getAllUserProduct(int pagenumber=1)
         {
             GeneralResponse generalResponse = new GeneralResponse { 
                 success=true,
                 message="you get All Product",
-                data=productServices.allProducts(pagenumber),
+                data=productServices.allProductsForUsers(pagenumber),
             };
            
+            return Ok(generalResponse);
+
+        }
+
+        [HttpGet("Admin")]
+        public IActionResult getAllProductForAdmin(int pagenumber = 1)
+        {
+            GeneralResponse generalResponse = new GeneralResponse
+            {
+                success = true,
+                message = "you get All Product",
+                data = productServices.allProductsForAdmin(pagenumber),
+            };
+
             return Ok(generalResponse);
 
         }
@@ -78,5 +92,30 @@ namespace WaterProducts.Controllers
             };
             return Ok(response);
         }
+
+        [HttpPut("{id:int}")]
+        public IActionResult updateProduct(int id,Product product)
+        {
+            return Ok();
+        }
+
+        [HttpGet("ProductsOutStock")]
+        public async Task<IActionResult> productsOutOfStock()
+        {
+            GeneralResponse response = new GeneralResponse();
+            var result = await productServices.getProductsOutOfStock();
+            if (result.IsSuccess)
+            {
+                response.success = true;
+                response.message = "You Get All Products Out Of Stock";
+                response.data = result.data;
+                return Ok(response);
+            }
+
+
+            return BadRequest(result);
+
+        }
+
     }
 }
