@@ -41,7 +41,7 @@ namespace WaterProducts.Controllers
                 {
                     success = true,
                     message = "you create product Successfully",
-                    data = product,
+                    data = result.data,
                 };
 
                 return Ok(generalResponse);

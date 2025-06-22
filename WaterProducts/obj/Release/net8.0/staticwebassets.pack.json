@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "G:\\C# Projects\\WaterProducts\\WaterProducts\\wwwroot\\images\\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif",
+      "PackagePath": "staticwebassets\\images\\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.WaterProducts.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.WaterProducts.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.WaterProducts.props",
+      "PackagePath": "build\\WaterProducts.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WaterProducts.props",
+      "PackagePath": "buildMultiTargeting\\WaterProducts.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.WaterProducts.props",
+      "PackagePath": "buildTransitive\\WaterProducts.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

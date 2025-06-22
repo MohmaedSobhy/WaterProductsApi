@@ -42,15 +42,16 @@ namespace WaterProducts.Controllers
         {
             GeneralResponse response = new GeneralResponse();
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            bool add = await favouriteProducts.addProductToFavourite(productId, userIdClaim!);
-            if (add == false)
+            var result = await favouriteProducts.addProductToFavourite(productId, userIdClaim!);
+            if (result.IsSuccess == false)
             {
                 response.success = false;
                 response.message = "Failed To Add Product Favourite";
-                return BadRequest(response);
+                return BadRequest(result);
             }
             response.success = true;
             response.message = "You Add Product to your List";
+            response.data = result.data;
             return Ok(response);
         }
 
@@ -61,8 +62,8 @@ namespace WaterProducts.Controllers
         {
             GeneralResponse response = new GeneralResponse();
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            bool add = await favouriteProducts.removeProductFromFavourite(productId, userIdClaim!);
-            if (add == false) {
+            var result = await favouriteProducts.removeProductFromFavourite(productId, userIdClaim!);
+            if (result.IsSuccess == false) {
                 response.success = false;
                 response.message = "Your Product Not in List";
                 response.data = "No Products";
@@ -70,7 +71,7 @@ namespace WaterProducts.Controllers
             }
             response.success = true;
             response.message = "You Remove Product From your Favourite List";
-            response.data = "Product Remove";
+            response.data = result.data;
             return Ok(response);
         }
 

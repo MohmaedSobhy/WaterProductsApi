@@ -6,8 +6,8 @@ namespace WaterProducts.services.favourite
     {
         public Task<List<Product>> getUserFavouriteProduct(string userId);
 
-        public Task<bool> addProductToFavourite(int productId,string userId);
+        public Task<Result> addProductToFavourite(int productId,string userId);
 
-        public Task<bool> removeProductFromFavourite(int productId,string userId);
+        public Task<Result> removeProductFromFavourite(int productId,string userId);
     }
 }

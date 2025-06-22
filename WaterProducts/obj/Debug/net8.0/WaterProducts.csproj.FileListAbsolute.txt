@@ -177,3 +177,4 @@ G:\C# Projects\WaterProducts\WaterProducts\bin\Debug\net8.0\runtimes\browser\lib
 G:\C# Projects\WaterProducts\WaterProducts\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 G:\C# Projects\WaterProducts\WaterProducts\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 G:\C# Projects\WaterProducts\WaterProducts\bin\Debug\net8.0\WaterProducts.staticwebassets.runtime.json
+G:\C# Projects\WaterProducts\WaterProducts\obj\Debug\net8.0\WaterProducts.sourcelink.json

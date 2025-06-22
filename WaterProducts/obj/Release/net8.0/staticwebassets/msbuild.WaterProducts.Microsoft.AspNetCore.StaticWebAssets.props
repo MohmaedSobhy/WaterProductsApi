@@ -1,0 +1,22 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WaterProducts</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WaterProducts</BasePath>
+      <RelativePath>images/c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>7335n7svlt</Fingerprint>
+      <Integrity>He67AuV00wWQR0WPvFb84VDaF7xqBzGMGPT2wyfCr8g=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\c1f71c27-8dfc-411a-b09b-b1ffc504c6bd.jfif'))</OriginalItemSpec>
+    </StaticWebAsset>
+  </ItemGroup>
+</Project>
