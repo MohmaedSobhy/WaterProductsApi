@@ -267,27 +267,6 @@
   },
   {
     "ContainingType": "WaterProducts.Controllers.ProductsController",
-    "Method": "updateProduct",
-    "RelativePath": "api/Products/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "product",
-        "Type": "WaterProducts.models.Product",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WaterProducts.Controllers.ProductsController",
     "Method": "searchForProducts",
     "RelativePath": "api/Products/{searchKey}",
     "HttpMethod": "GET",

@@ -9,6 +9,7 @@ namespace WaterProducts.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
 
@@ -19,6 +20,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpGet("user")]
+        [AllowAnonymous]
         public IActionResult getAllUserProduct(int pagenumber=1)
         {
             GeneralResponse generalResponse = new GeneralResponse { 
@@ -93,11 +95,7 @@ namespace WaterProducts.Controllers
             return Ok(response);
         }
 
-        [HttpPut("{id:int}")]
-        public IActionResult updateProduct(int id,Product product)
-        {
-            return Ok();
-        }
+       
 
         [HttpGet("ProductsOutStock")]
         public async Task<IActionResult> productsOutOfStock()
@@ -117,5 +115,7 @@ namespace WaterProducts.Controllers
 
         }
 
+
+       
     }
 }

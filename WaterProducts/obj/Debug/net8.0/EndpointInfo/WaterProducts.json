@@ -468,46 +468,6 @@
             "description": "OK"
           }
         }
-      },
-      "put": {
-        "tags": [
-          "Products"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Product"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Product"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Product"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/api/Products/{searchKey}": {
@@ -649,45 +609,6 @@
             "minLength": 1,
             "type": "string",
             "format": "password"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Product": {
-        "required": [
-          "description",
-          "imageUrl",
-          "name",
-          "price",
-          "stockQuantiy"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "maxLength": 150,
-            "minLength": 1,
-            "type": "string"
-          },
-          "description": {
-            "maxLength": 150,
-            "minLength": 1,
-            "type": "string"
-          },
-          "price": {
-            "type": "number",
-            "format": "double"
-          },
-          "stockQuantiy": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "imageUrl": {
-            "minLength": 1,
-            "type": "string"
           }
         },
         "additionalProperties": false

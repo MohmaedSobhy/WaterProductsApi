@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WaterProducts.data;
 using WaterProducts.dto;
 using WaterProducts.models;
 using WaterProducts.services.admin_orders;
@@ -9,6 +10,7 @@ namespace WaterProducts.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = userRoles.admin)]
     public class AdminOrderController : ControllerBase
     {
         private readonly IAdminOrderServices orderServices;
@@ -19,7 +21,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpPost("UpdateOrder")]
-        [AllowAnonymous]
+       
         public async Task<IActionResult> changeOrderType(UpdateOrderTypeDto order)
         {
             GeneralResponse response = new GeneralResponse();
@@ -35,7 +37,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpGet("Waiting")]
-        [AllowAnonymous]
+        
         public async Task<IActionResult> getAllWaitingOrderInSystem()
         {
             GeneralResponse response = new GeneralResponse();
@@ -51,7 +53,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpGet("Progress")]
-        [AllowAnonymous]
+       
         public async Task<IActionResult> getAllProgressOrderInSystem()
         {
             GeneralResponse response = new GeneralResponse();
@@ -67,7 +69,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpGet("Deliverd")]
-        [AllowAnonymous]
+      
         public async Task<IActionResult> getAllDeliverdOrders()
         {
             GeneralResponse response = new GeneralResponse();

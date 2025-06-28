@@ -9,6 +9,7 @@ using WaterProducts.services.emial;
 using WaterProducts.data;
 using Azure;
 using Microsoft.EntityFrameworkCore;
+using WaterProducts.Filters;
 
 namespace WaterProducts.Controllers
 {
@@ -55,6 +56,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpPost("Register")]
+      
         public async Task<IActionResult> register(RegisterDto user)
         {
             GeneralResponse response = new GeneralResponse();
@@ -128,8 +130,12 @@ namespace WaterProducts.Controllers
             }
 
             var result = admins.Select(user => new { user.Id,user.name,user.Email});
+            response.success = true;
+            response.data = result;
+            response.message = "All Admins";    
 
-            return Ok(result);
+            return Ok(response);
         }
+
     }
 }

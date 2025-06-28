@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WaterProducts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+083304f495cc24cc7a7198e3507c45a40e917bc3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+818e593899c22ae08e95213eba00bdf8722b10ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("WaterProducts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WaterProducts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

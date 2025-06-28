@@ -24,6 +24,7 @@ namespace WaterProducts.services.admin_orders
                 phonenumber = order.Phone,
                 Id = order.OrderId,
                 userEmail=order.user.Email!,
+                name=order.user.name,
                 totalPriced = order.totalPrice
             });
             return Result.Success(result);

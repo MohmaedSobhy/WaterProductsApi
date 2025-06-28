@@ -6,6 +6,7 @@
 
         public double totalPriced { get; set; }
 
+        public string name { get; set; }
         public string userEmail { get; set; }
 
         public string address { get; set; }

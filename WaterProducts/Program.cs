@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Threading.Tasks;
 using WaterProducts.data;
 using WaterProducts.extensions;
 using WaterProducts.models;
@@ -19,7 +20,7 @@ namespace WaterProducts
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,7 @@ namespace WaterProducts
 
             builder.Services.IdentiyConfigure();
             builder.Services.JWTConfigureAuthincation(builder.Configuration);
-
+            builder.Services.SetCors();
 
             var app = builder.Build();
 
@@ -46,15 +47,21 @@ namespace WaterProducts
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("AllowAllPolicy");
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
-            app.UseAuthorization();
+            app.UseAuthentication(); 
+
+            app.UseAuthorization();  
+
+            
 
 
             app.MapControllers();
-
+           
             app.Run();
         }
     }

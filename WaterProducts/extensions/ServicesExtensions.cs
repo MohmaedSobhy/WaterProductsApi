@@ -54,6 +54,7 @@ namespace WaterProducts.extensions
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = configuration["Jwt:Issuer"],
                         ValidAudience = configuration["Jwt:Audience"],
+                        ClockSkew = TimeSpan.Zero,
                         IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
                     };
@@ -75,6 +76,20 @@ namespace WaterProducts.extensions
         {
             services.AddDbContext<ApplicationData>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+        }
+
+        public static void SetCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
         }
     }
 }

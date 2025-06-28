@@ -27,6 +27,16 @@ namespace WaterProducts.services
                 return Result.Failure("Add Product To your Cart");
 
 
+            // validate product quantity 
+
+            foreach(var productCart in cart.products)
+            {
+                await dataBase.Entry(productCart).Reference(p => p.product).LoadAsync();
+                if(productCart.productQuantity >productCart.product.stockQuantiy)
+                    return Result.Failure($"No Available amount for {productCart.product.Name} in Stock ");
+            }
+            
+
             Order order = new Order();
             order.UserId = UserId;
             order.Address = createOrder.Address;
