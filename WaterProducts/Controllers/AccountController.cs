@@ -10,6 +10,7 @@ using WaterProducts.data;
 using Azure;
 using Microsoft.EntityFrameworkCore;
 using WaterProducts.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WaterProducts.Controllers
 {
@@ -86,6 +87,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpPost("AddAdmin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> addAdmin(RegisterDto user)
         {
             GeneralResponse response = new GeneralResponse();
@@ -114,6 +116,7 @@ namespace WaterProducts.Controllers
         }
 
         [HttpGet("AllAdmins")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> getAllAdmins()
         {
             
