@@ -60,6 +60,8 @@ namespace WaterProducts.data
         }
 
         public DbSet<Product> products { get; set; }
+
+        public DbSet<RefreshToken> refreshTokens { get; set; }
         public DbSet<FavouriteProducts> favourites { get; set; }
         
         public DbSet<ApplicationUser> users { get; set; }

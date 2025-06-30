@@ -11,6 +11,7 @@ using Azure;
 using Microsoft.EntityFrameworkCore;
 using WaterProducts.Filters;
 using Microsoft.AspNetCore.Authorization;
+using WaterProducts.services.authincations;
 
 namespace WaterProducts.Controllers
 {
@@ -18,42 +19,35 @@ namespace WaterProducts.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly SignInManager<ApplicationUser> signInManager;
+        
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IGenerateToken generateToken;
-        private readonly services.emial.IEmailSender emailSender;
+       
+        private readonly IAuthincationServices authincationServices;
+       
 
-        public AccountController(SignInManager<ApplicationUser> signInManager,services.emial.IEmailSender email, UserManager<ApplicationUser> userManager,IGenerateToken generateToken)
+        public AccountController(IAuthincationServices authincation, UserManager<ApplicationUser> userManager)
         {
-            this.signInManager = signInManager;
+           
             this.userManager = userManager;
-            this.generateToken = generateToken;
-            this.emailSender = email;
+         
+            this.authincationServices = authincation;
+
         }
 
         [HttpPost("Login")]
         public async Task<IActionResult> login(LoginDto user)
         {
-            GeneralResponse response = new GeneralResponse();
-            var result = await signInManager.PasswordSignInAsync(user.Email, user.Password, false, false);
-            if (result.Succeeded) {
-
-                ApplicationUser? userData = await userManager.FindByEmailAsync(user.Email);
-                if (userData == null)
-                {
-                    return BadRequest(Result.Failure("Email or password wrong"));
-                }
-                 IList<string> roles = await userManager.GetRolesAsync(userData!);
-                string token = await generateToken.getGenerateToken(userData!,roles);
-
+            
+            var result = await authincationServices.LoginServices(user);
+            if (result.IsSuccess) {
+                GeneralResponse response = new GeneralResponse();
                 response.message = "You Login Succefully";
                 response.success = true;
-                response.data = new { token, name = userData.name, email = user.Email, role = roles[0]};
+                response.data = result.data;
                 return Ok(response);
             }
-            response.success = false;
-            response.message = "Email or password wrong";
-            return BadRequest(response);
+
+            return BadRequest(result);
         }
 
         [HttpPost("Register")]
@@ -61,58 +55,34 @@ namespace WaterProducts.Controllers
         public async Task<IActionResult> register(RegisterDto user)
         {
             GeneralResponse response = new GeneralResponse();
+            var result = await authincationServices.RegisterServices(user);
 
-            ApplicationUser newUser=new ApplicationUser();
-            newUser.Email = user.Email;
-            newUser.name = user.userName;
-            newUser.UserName = user.Email;
-           
-            var result = await userManager.CreateAsync(newUser, user.Password);
-           
-            if (result.Succeeded) {
-
-                string token = await generateToken.getGenerateToken(newUser!, [userRoles.user]);
-                userManager.AddToRoleAsync(newUser, userRoles.user).Wait();
-                response.data=new { token, newUser.name,email=newUser.Email,role="user"};
+            if (result.IsSuccess)
+            {
                 response.success = true;
-                response.message = "You Register Scussfully";
-                return Ok(response); 
+                response.data= result.data;
+                response.message = "You Register Succefully";
+                return Ok(response);
             }
-            var  errors = result.Errors.Where(e => !e.Code.Contains("UserName"));
-            response.message = "Failed To Register";
-            response.success = false;
-            response.data = errors;
-            return BadRequest(response);
-            
+            return BadRequest(result);
         }
 
         [HttpPost("AddAdmin")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> addAdmin(RegisterDto user)
         {
+
             GeneralResponse response = new GeneralResponse();
-            ApplicationUser newUser = new ApplicationUser();
-            newUser.Email = user.Email;
-            newUser.name = user.userName;
-            newUser.UserName = user.Email;
+            var result = await authincationServices.RegisterServices(user, userRoles.admin);
 
-            var result = await userManager.CreateAsync(newUser, user.Password);
-
-            if (result.Succeeded)
+            if (result.IsSuccess)
             {
-
-                string token = await generateToken.getGenerateToken(newUser!, [userRoles.user]);
-                userManager.AddToRoleAsync(newUser, userRoles.admin).Wait();
-                response.data = new { token, newUser.name, email = newUser.Email };
                 response.success = true;
-                response.message = "New Admin Add Scussfully";
+                response.data = result.data;
+                response.message = "You Register Succefully";
                 return Ok(response);
             }
-            var errors = result.Errors.Where(e => !e.Code.Contains("UserName"));
-            response.message = "Failed To Add new Admin";
-            response.success = false;
-            response.data = errors;
-            return BadRequest(response);
+            return BadRequest(result);
         }
 
         [HttpGet("AllAdmins")]
@@ -138,6 +108,22 @@ namespace WaterProducts.Controllers
             response.message = "All Admins";    
 
             return Ok(response);
+        }
+
+
+        [HttpPost("RefreshToken")]
+        public async Task<IActionResult> getNewToken([FromBody] string refreshToken)
+        {
+            var result = await authincationServices.generateNewToken(refreshToken);
+            if (result.IsSuccess)
+            {
+                GeneralResponse response = new GeneralResponse();
+                response.success = true;
+                response.data = result.data;
+                response.message = "You Get New Token Succefully";
+                return Ok(response);
+            }
+            return Unauthorized("Refresh Token Expire");
         }
 
     }

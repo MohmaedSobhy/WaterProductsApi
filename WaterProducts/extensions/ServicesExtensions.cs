@@ -12,6 +12,8 @@ using WaterProducts.data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using WaterProducts.models;
+using Microsoft.AspNetCore.Authorization;
+using WaterProducts.services.authincations;
 
 namespace WaterProducts.extensions
 {
@@ -64,12 +66,13 @@ namespace WaterProducts.extensions
         public static void ScopeServices(this IServiceCollection services)
         {
             services.AddScoped<IProductServices, ProductServices>();
-            services.AddScoped<IGenerateToken, GenerateToken>();
+            services.AddScoped<ITokenServices, TokenServices>();
             services.AddScoped<IFavouriteProducts, FavouriteProductsServices>();
             services.AddScoped<ICartServices, CartServices>();
             services.AddScoped<IUserOrderServices, UserOrderServices>();
             services.AddScoped<IAdminOrderServices, AdminOrderServices>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IAuthincationServices, AuthincationServices>();
         }
 
         public static void DataBaseConfigure(this IServiceCollection services,IConfiguration configuration)

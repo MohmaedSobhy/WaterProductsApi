@@ -28,12 +28,15 @@ namespace WaterProducts
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            
             builder.Services.DataBaseConfigure(builder.Configuration);
             builder.Services.ScopeServices();
 
             builder.Services.Configure<GmailOptions>(
                builder.Configuration.GetSection(GmailOptions.GmailOptionsKey));
+
+            builder.Services.Configure<JwtOptions>(
+              builder.Configuration.GetSection("Jwt"));
 
             builder.Services.IdentiyConfigure();
             builder.Services.JWTConfigureAuthincation(builder.Configuration);

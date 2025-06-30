@@ -43,6 +43,22 @@
   },
   {
     "ContainingType": "WaterProducts.Controllers.AccountController",
+    "Method": "getNewToken",
+    "RelativePath": "api/Account/RefreshToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "refreshToken",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WaterProducts.Controllers.AccountController",
     "Method": "register",
     "RelativePath": "api/Account/Register",
     "HttpMethod": "POST",

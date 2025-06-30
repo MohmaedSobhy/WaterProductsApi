@@ -12,7 +12,6 @@
             this.data = data;
         }
        
-
         public static Result Success(dynamic data)
         {
             return new Result(true, data);
